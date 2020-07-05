@@ -1,8 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-/**
- * 栈
- */
+/**栈*/
 class Stack {
   constructor(items = []) {
     this.items = items
@@ -49,9 +47,7 @@ class Stack {
   }
 }
 
-/**
- * 队列
- */
+/**队列*/
 class Queue {
   constructor(items = []) {
     this.items = items
@@ -100,9 +96,7 @@ class Queue {
   }
 }
 
-/**
- * 优先级队列
- */
+/**优先级队列*/
 class PriorityQueue extends Queue {
   /**
    * @param {any} e 押入队列中的元素
@@ -136,9 +130,7 @@ class PriorityQueue extends Queue {
   }
 }
 
-/**
- * 链表
- */
+/**链表*/
 class LinkedList {
   /**
    * @param {number} length 链表初始长度
@@ -150,7 +142,7 @@ class LinkedList {
   }
 
   /**
-   * @param {LinkedList} data 链表中的一个块
+   * @param {LinkedList} data 链表中的一个node
    * @param {LinkedList} next 链表中的next
    * 向链表最后插入元素
    */
@@ -175,9 +167,9 @@ class LinkedList {
   }
 
   /**
-   * @param {number} position 插入块的指定位置
-   * @param {*} data 需要插入的块
-   * 向链表指定位置插入块
+   * @param {number} position 插入node的指定位置
+   * @param {*} data 需要插入的node
+   * 向链表指定位置插入node
    */
   insert(position, data) {
     if (position < 0 || position > this.length) return false
@@ -232,7 +224,7 @@ class LinkedList {
    * @param {number} position 需要修改的data的下标值
    * @param {any} data 修改后的data
    * @returns {boolean} 是否成功修改
-   * 修改指定块内容
+   * 修改指定node内容
    */
   update(position, data) {
     if (position < 0 || position >= this.length) return false
@@ -246,35 +238,35 @@ class LinkedList {
   }
 
   /**
-   * @param {number} position 需要删除块的下标
+   * @param {number} position 需要删除node的下标
    * @returns {null||any} 是否删除成功,成功则返回删除的data,失败返回null
-   * 删除指定位置的块
+   * 删除指定位置的node
    */
-  removeAt(position){
+  removeAt(position) {
     if (position < 0 || position >= this.length) return null
     let current = this.head
-    if(position===0){
+    if (position === 0) {
       this.head = this.head.next
-      this.length-=1
+      this.length -= 1
       return current.data
     }
     let index = 0
     let previous = null
-    while(index++ <position){
+    while (index++ < position) {
       previous = current
       current = current.next
     }
     previous.next = current.next
-      this.length-=1
-      return current.data
+    this.length -= 1
+    return current.data
   }
 
   /**
-   * @param {any} data 需要指定内容删除的块
+   * @param {any} data 需要指定内容删除的node
    * @returns {null||any} 是否删除成功,成功则返回删除的data,失败返回null
-   * 删除指定内容删除的块
+   * 删除指定内容删除的node
    */
-  remove(data){
+  remove(data) {
     let position = this.indexOf(data)
     return this.removeAt(position)
   }
@@ -295,17 +287,36 @@ class LinkedList {
   /**
    * @returns 返回链表是否为空
    */
-  isEmpty(){
+  isEmpty() {
     return this.length === 0
   }
 
   /**
    * @returns 返回链表长度
    */
-  size(){
+  size() {
     return this.length
   }
 }
+
+/**双向链表*/
+class DoublyLinkedList {
+  /**
+   * @param {number} length 链表初始长度
+   * @param {LinkedList} head 链表中的head
+   * @param {LinkedList} tail 链表中的tail
+   */
+  constructor(length = 0, head = null, tail = null) {
+    this.length = length
+    this.head = head
+    this.tail = tail
+  }
+}
+
+
+
+
+
 
 
 let a = new LinkedList()
